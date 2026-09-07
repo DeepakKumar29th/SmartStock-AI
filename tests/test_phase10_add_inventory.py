@@ -71,7 +71,7 @@ def cleanup_test_records(engine):
 
 
 class TestPhase10AddInventoryData:
-    TEST_DT = date(2026, 9, 6)
+    TEST_DT = date.today()
     TEST_STORE = 0
     TEST_SKU = 0
 
@@ -174,10 +174,18 @@ class TestPhase10AddInventoryData:
         assert "discount" in res2["message"].lower()
 
     # 7. Invalid date (future date check in validation)
-    def test_case_07_invalid_future_date_logic(self):
-        tomorrow = datetime.today().date() + timedelta(days=1)
-        today = datetime.today().date()
-        assert tomorrow > today, "Tomorrow must be in the future"
+    def test_case_07_invalid_future_date_logic(self, engine):
+        tomorrow = date.today() + timedelta(days=1)
+        res = save_inventory_update(
+            engine=engine,
+            dt=tomorrow,
+            store_id=self.TEST_STORE,
+            product_id=self.TEST_SKU,
+            sale_amount=10.0,
+            stock_status="In Stock",
+        )
+        assert res["success"] is False
+        assert "future" in res["message"].lower()
 
     # 8. Duplicate date + store + product protection
     def test_case_08_duplicate_protection(self, engine):
@@ -344,3 +352,61 @@ class TestPhase10AddInventoryData:
             alert_cnt = conn.execute(text("SELECT COUNT(*) FROM app.alert_actions")).scalar()
             assert repl_cnt >= 0
             assert alert_cnt >= 0
+
+    # 16. Today's date accepted dynamically (not hard-coded)
+    def test_case_16_today_date_dynamic_accepted(self, engine):
+        current_today = date.today()
+        res = save_inventory_update(
+            engine=engine,
+            dt=current_today,
+            store_id=self.TEST_STORE,
+            product_id=self.TEST_SKU,
+            sale_amount=88.5,
+            stock_status="In Stock",
+            notes="Dynamic current date verification",
+        )
+        assert res["success"] is True
+        assert res["update_id"] is not None
+
+    # 17. Real-time read-after-write from Neon
+    def test_case_17_read_after_write_immediate(self, engine):
+        current_today = date.today()
+        save_res = save_inventory_update(
+            engine=engine,
+            dt=current_today,
+            store_id=self.TEST_STORE,
+            product_id=self.TEST_SKU,
+            sale_amount=99.0,
+            stock_status="Low Stock",
+            notes="Immediate query back check",
+        )
+        assert save_res["success"] is True
+
+        df = load_recent_inventory_updates(engine, limit=10)
+        assert not df.empty
+        matching = df[
+            (df["dt"] == current_today)
+            & (df["store_id"] == self.TEST_STORE)
+            & (df["product_id"] == self.TEST_SKU)
+        ]
+        assert not matching.empty, "Newly inserted record must be immediately queryable"
+        assert float(matching.iloc[0]["sale_amount"]) == 99.0
+        assert matching.iloc[0]["stock_status"] == "Low Stock"
+
+    # 18. Timestamp stored correctly in PostgreSQL
+    def test_case_18_timestamp_stored_correctly(self, engine):
+        current_today = date.today()
+        with engine.connect() as conn:
+            row = conn.execute(text("""
+                SELECT created_at, updated_at
+                FROM app.inventory_updates
+                WHERE dt = :dt AND store_id = :store_id AND product_id = :product_id
+            """), {
+                "dt": current_today,
+                "store_id": self.TEST_STORE,
+                "product_id": self.TEST_SKU
+            }).fetchone()
+            assert row is not None, "Record must exist in database"
+            ts = row[1] or row[0]
+            assert ts is not None, "Timestamp must not be null"
+

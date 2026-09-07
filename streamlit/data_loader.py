@@ -409,6 +409,19 @@ def save_inventory_update(
     if dt is None:
         return {"success": False, "is_new": False, "message": "Reporting date is required.", "update_id": None}
 
+    from datetime import date as _date, datetime as _datetime
+    parsed_dt = dt
+    if isinstance(parsed_dt, str):
+        try:
+            parsed_dt = _datetime.strptime(parsed_dt, "%Y-%m-%d").date()
+        except Exception:
+            pass
+    elif hasattr(parsed_dt, "date") and not isinstance(parsed_dt, _date):
+        parsed_dt = parsed_dt.date()
+
+    if isinstance(parsed_dt, _date) and parsed_dt > _date.today():
+        return {"success": False, "is_new": False, "message": "Reporting date cannot be in the future.", "update_id": None}
+
     try:
         store_id = int(store_id)
         product_id = int(product_id)

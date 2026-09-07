@@ -91,7 +91,7 @@ class TestOperationalTableStructure:
 
 
 class TestOperationalTableConstraints:
-    TEST_DT = date(2026, 9, 1)
+    TEST_DT = date.today()
     TEST_STORE = 0
     TEST_PRODUCT = 0
 
@@ -269,21 +269,28 @@ class TestDataLoaderOperationalFunctions:
 
     def test_save_inventory_update_validation(self, engine):
         import sys
+        from datetime import timedelta
         sys.path.insert(0, str(_ROOT / "streamlit"))
         from data_loader import save_inventory_update
 
+        # Future date rejected dynamically
+        tomorrow = date.today() + timedelta(days=1)
+        res_fut = save_inventory_update(engine, tomorrow, 0, 0, 10, "In Stock")
+        assert not res_fut["success"]
+        assert "future" in res_fut["message"].lower()
+
         # Negative sales validation
-        res = save_inventory_update(engine, date(2026, 9, 2), 0, 0, -10, "In Stock")
+        res = save_inventory_update(engine, date.today(), 0, 0, -10, "In Stock")
         assert not res["success"]
         assert "negative" in res["message"].lower()
 
         # Invalid stock status validation
-        res = save_inventory_update(engine, date(2026, 9, 2), 0, 0, 10, "Bad Status")
+        res = save_inventory_update(engine, date.today(), 0, 0, 10, "Bad Status")
         assert not res["success"]
         assert "stock status" in res["message"].lower()
 
         # Invalid discount (>100)
-        res = save_inventory_update(engine, date(2026, 9, 2), 0, 0, 10, "In Stock", discount=120)
+        res = save_inventory_update(engine, date.today(), 0, 0, 10, "In Stock", discount=120)
         assert not res["success"]
         assert "discount" in res["message"].lower()
 
@@ -292,7 +299,7 @@ class TestDataLoaderOperationalFunctions:
         sys.path.insert(0, str(_ROOT / "streamlit"))
         from data_loader import save_inventory_update, load_recent_inventory_updates, load_inventory_update_summary
 
-        test_dt = date(2026, 9, 3)
+        test_dt = date.today()
         store = 5
         product = 12
 

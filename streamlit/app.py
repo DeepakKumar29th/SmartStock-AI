@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 # ── imports ────────────────────────────────────────────────────
 import pandas as pd
+from datetime import date, datetime, timedelta
 import plotly.express as px
 import plotly.io as pio
 import plotly.graph_objects as go
@@ -3657,11 +3658,13 @@ elif page == "Add Inventory Data":
 
             s1_col1, s1_col2, s1_col3 = st.columns([1, 1.5, 2])
             with s1_col1:
+                today_date = date.today()
                 input_date = st.date_input(
                     "Date *",
-                    value=datetime.today().date(),
-                    max_value=datetime.today().date(),
-                    help="Observation date for this daily record"
+                    value=today_date,
+                    max_value=today_date,
+                    min_value=date(2024, 1, 1),
+                    help="Observation date for this daily record (Defaults to today)"
                 )
             with s1_col2:
                 selected_store_label = st.selectbox(
@@ -3784,7 +3787,7 @@ elif page == "Add Inventory Data":
             validation_errors = []
             if input_date is None:
                 validation_errors.append("Reporting date is required.")
-            elif input_date > datetime.today().date():
+            elif input_date > date.today():
                 validation_errors.append("Reporting date cannot be in the future.")
 
             if store_id is None:
@@ -3828,11 +3831,15 @@ elif page == "Add Inventory Data":
                         st.cache_data.clear()
                         st.success("Inventory record saved successfully.")
                         badge_title = "Record Saved" if result.get("is_new") else "Record Updated"
+                        recorded_time_str = datetime.now().strftime("%Y-%m-%d %I:%M:%S %p")
                         st.markdown(f"""
 <div style="background:#F0FDF4; border:1px solid #BBF7D0; border-left:4px solid #16A34A; border-radius:10px; padding:14px 18px; margin:12px 0;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
         <span style="background:#DCFCE7; color:#15803D; font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px;">
             {badge_title} &bull; ID #{result['update_id']}
+        </span>
+        <span style="font-size:11px; color:#15803D; font-weight:500;">
+            Logged: {recorded_time_str}
         </span>
     </div>
     <div style="font-size:14px; font-weight:600; color:#14532D; margin-bottom:6px;">
@@ -3882,10 +3889,13 @@ elif page == "Add Inventory Data":
         display_recent["Discount"] = display_recent["discount"].apply(lambda v: f"{float(v):.1f}%")
         display_recent["Holiday"] = display_recent["holiday_flag"].apply(lambda v: "Yes" if v == 1 else "No")
         display_recent["Activity"] = display_recent["activity_flag"].apply(lambda v: "Yes" if v == 1 else "No")
+        display_recent["Logged At"] = pd.to_datetime(
+            display_recent["updated_at"].fillna(display_recent["created_at"])
+        ).dt.strftime("%Y-%m-%d %H:%M:%S")
 
         cols_to_show = [
             "update_id", "dt", "Store", "Product / SKU",
-            "Daily Sales", "stock_status", "Discount", "Holiday", "Activity", "notes"
+            "Daily Sales", "stock_status", "Discount", "Holiday", "Activity", "Logged At", "notes"
         ]
         rename_cols = {
             "update_id": "Record ID",
@@ -3903,6 +3913,7 @@ elif page == "Add Inventory Data":
                 "Record ID": st.column_config.NumberColumn(format="#%d"),
                 "Date": st.column_config.DateColumn("Date", format="YYYY-MM-DD"),
                 "Stock Status": st.column_config.TextColumn("Stock Status"),
+                "Logged At": st.column_config.TextColumn("Logged At"),
                 "Manager Notes": st.column_config.TextColumn("Manager Notes", width="medium"),
             }
         )
