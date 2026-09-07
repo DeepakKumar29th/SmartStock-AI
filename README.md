@@ -14,6 +14,12 @@ It uses historical retail data to analyze demand, forecast next-day sales, ident
 
 ---
 
+## 🌐 Live Demo
+
+**[Open SmartStock AI](https://smartstock-inventory-ai.streamlit.app/)**
+
+---
+
 ## 📌 Problem Statement
 
 Retail stores need to maintain the right amount of inventory.
@@ -93,35 +99,37 @@ Manager Decision
 
 ## 🚀 Application
 
-SmartStock AI has 8 main pages:
+SmartStock AI includes 8 pages:
 
-1. **Dashboard** - Overall inventory and demand summary
-2. **Products** - Product-level demand, risk and recommendations
-3. **Stores** - Store-level performance and risk
-4. **Demand & Forecast** - Historical demand and forecast analysis
-5. **Inventory Risk** - Products grouped by risk level
-6. **Replenishment** - Suggested reorder quantities and decisions
-7. **Add Inventory Data** - Add and save new inventory information
-8. **AI Inventory Assistant** -Get explanations from project data
+| Page | Purpose |
+|---|---|
+| Dashboard | Overall inventory summary |
+| Products | Product demand and risk |
+| Stores | Store performance and risk |
+| Demand & Forecast | Demand and forecast analysis |
+| Inventory Risk | Stockout risk analysis |
+| Replenishment | Reorder recommendations |
+| Add Inventory Data | Add inventory information |
+| AI Inventory Assistant | Explain project results |
 
 ---
 
 ## 🤖 Machine Learning
 
-A **Random Forest Regressor** is used to forecast next-day demand.
+A **Random Forest Regressor** is used for next-day demand forecasting.
 
-The model uses historical sales, recent demand patterns, stockout history, calendar information, discounts, and weather-related features.
+The model uses historical sales, recent demand, stockout history, calendar information, discounts, and weather-related features.
 
-### Model Results
+### Results
 
-| Metric | Result |
+| Metric | Value |
 |---|---:|
 | MAE | 0.3889 |
 | RMSE | 0.6451 |
 | R² | 0.8814 |
 | MAPE | 53.90% |
 
-A time-based train/test split is used so that future data is not used for earlier predictions.
+A time-based train/test split is used to prevent future data from being used for earlier predictions.
 
 > MAPE is relatively high because the dataset contains many low and zero-sales observations.
 
@@ -139,23 +147,21 @@ Predicted Demand × 7
 ```
 
 
-## 🗄️ Database & Cloud Deployment
 
-PostgreSQL is used to store the project's data and results.
+---
 
-The application was developed with local PostgreSQL and deployed using **Neon PostgreSQL**.
+### 7. Improve Database & Deployment
 
-The database stores:
+Combine these into one clean section because they are closely related:
 
-- Store and product data
-- Historical sales
-- Forecast results
-- Inventory risk
-- Replenishment recommendations
-- New inventory updates
-- Manager decisions
+```markdown
+## ☁️ Database & Deployment
 
-### Deployment
+The application uses PostgreSQL for storing project data and results.
+
+- **Development:** Local PostgreSQL
+- **Production:** Neon PostgreSQL
+- **Application:** Streamlit Community Cloud
 
 ```text
 GitHub
@@ -166,6 +172,7 @@ SmartStock AI
    ↓
 Neon PostgreSQL
 ```
+---
 
 ## 📊 Power BI
 
@@ -182,15 +189,6 @@ The dashboards cover:
 
 ---
 
-## 🧪 Testing
-
-The project uses **Pytest** for automated testing.
-
-```bash
-pytest -v
-```
----
-
 ## ⚠️ Limitations
 
 - The main dataset is historical, not live retail data.
@@ -199,8 +197,6 @@ pytest -v
 - The two datasets are not joined.
 - Forecast performance can vary for low and zero-sales products.
 - Replenishment results are recommendations, not exact purchase orders.
-
----
 
 ---
 
@@ -223,15 +219,20 @@ SmartStock-AI/
 
 ---
 
-## 🔗 Links
+## 🎓 Internship & Capstone Project
 
-- [SmartStock AI - Personal GitHub](https://github.com/DeepakKumar29th/SmartStock-AI)
+SmartStock AI was developed as the **final project of my Data Analytics internship and capstone program with Sure Trust**.
+
+The internship focused on developing practical skills in **data analysis, SQL, Python, data visualization, business intelligence, and machine learning**. During the program, I worked on different stages of the data analytics process, including data preparation, database management, exploratory analysis, feature engineering, machine learning, and dashboard development.
+
+As the final capstone project, these skills were combined into **SmartStock AI**, a complete inventory analytics solution that takes historical retail data and turns it into demand forecasts, stockout risk insights, and replenishment recommendations.
+
+### Skills Applied
+
+**Data Analysis | SQL & PostgreSQL | Python | Machine Learning | Power BI | Streamlit | Business Intelligence**
+
+**Program:** Sure Trust Data Analytics Internship & Capstone Program
+
 - [Sure Trust Data Analytics Repository](https://github.com/sure-trust/DEEPAK-KUMAR-S-g1-data-analytics)
-
+- [Sure Trust Wesite](https://www.suretrustforruralyouth.com/)
 ---
-
-## 📚 References
-
-- [FreshRetailNet-50K Dataset](https://huggingface.co/datasets/Dingdong-Inc/FreshRetailNet-50K)
-- [FreshRetailNet-50K Research Paper](https://arxiv.org/abs/2505.16319)
-- [Instacart Market Basket Analysis Dataset](https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis)
