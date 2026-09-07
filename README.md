@@ -141,9 +141,7 @@ A time-based train/test split is used to prevent future data from being used for
 The project uses predicted demand to create a simple 7-day demand-cover recommendation.
 
 ```text
-Suggested Reorder Quantity
-=
-Predicted Demand × 7
+Suggested Reorder Quantity = Predicted Demand × 7
 ```
 
 
