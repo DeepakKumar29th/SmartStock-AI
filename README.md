@@ -6,13 +6,7 @@
 
 SmartStock AI is a retail inventory analytics and decision-support project.
 
-It uses historical retail data to:
-
-- Analyze sales and demand
-- Forecast next-day demand
-- Identify stockout risk
-- Suggest replenishment quantities
-- Support inventory decisions
+It uses historical retail data to analyze demand, forecast next-day sales, identify stockout risk, and support replenishment decisions.
 
 **Project Flow**
 
@@ -24,9 +18,9 @@ It uses historical retail data to:
 
 Retail stores need to maintain the right amount of inventory.
 
-Low inventory can lead to stockouts and lost sales, while excess inventory can increase waste and costs.
+Low inventory can cause stockouts and lost sales, while excess inventory can increase waste and costs.
 
-SmartStock AI uses historical data to identify demand patterns, detect inventory risk, and support better replenishment decisions.
+SmartStock AI helps identify demand patterns, inventory risk, and products that may need replenishment.
 
 ---
 
@@ -37,7 +31,7 @@ SmartStock AI uses historical data to identify demand patterns, detect inventory
 - Forecast next-day demand
 - Identify stockout risk
 - Generate replenishment recommendations
-- Store new inventory data
+- Store inventory updates
 - Provide clear business insights
 
 ---
@@ -77,8 +71,7 @@ SmartStock AI uses historical data to identify demand patterns, detect inventory
 ---
 
 ## 🔄 How It Works
-
-```text
+```
 Retail Data
      ↓
 Data Cleaning
@@ -93,11 +86,9 @@ Stockout Risk
      ↓
 Replenishment Recommendation
      ↓
-Manager Decision
+Manager Decision 
+```
 
-
-
-```markdown
 ---
 
 ## 🚀 Application
@@ -111,7 +102,7 @@ SmartStock AI has 8 main pages:
 5. **Inventory Risk** - Products grouped by risk level
 6. **Replenishment** - Suggested reorder quantities and decisions
 7. **Add Inventory Data** - Add and save new inventory information
-8. **AI Inventory Assistant** - Ask questions about project results
+8. **AI Inventory Assistant** -Get explanations from project data
 
 ---
 
@@ -145,13 +136,8 @@ The project uses predicted demand to create a simple 7-day demand-cover recommen
 Suggested Reorder Quantity
 =
 Predicted Demand × 7
+```
 
-
-
-### PART 8
-
-```markdown
----
 
 ## 🗄️ Database & Cloud Deployment
 
@@ -179,12 +165,7 @@ Streamlit Community Cloud
 SmartStock AI
    ↓
 Neon PostgreSQL
-
-
-### PART 9
-
-```markdown
----
+```
 
 ## 📊 Power BI
 
@@ -207,11 +188,7 @@ The project uses **Pytest** for automated testing.
 
 ```bash
 pytest -v
-
-
-### PART 10
-
-```markdown
+```
 ---
 
 ## ⚠️ Limitations
@@ -225,24 +202,6 @@ pytest -v
 
 ---
 
-## 💻 Run Locally
-
-```bash
-git clone https://github.com/DeepakKumar29th/SmartStock-AI.git
-cd SmartStock-AI
-
-python -m venv venv
-venv\Scripts\activate
-
-pip install -r requirements.txt
-
-streamlit run streamlit/app.py
-
-
-
-### PART 11
-
-```markdown
 ---
 
 ## 📁 Project Structure
@@ -260,12 +219,8 @@ SmartStock-AI/
 ├── requirements.txt
 ├── README.md
 └── .gitignore
+```
 
-
-
-### PART 12
-
-```markdown
 ---
 
 ## 🔗 Links
