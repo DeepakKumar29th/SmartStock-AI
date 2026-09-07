@@ -222,7 +222,7 @@ SmartStock-AI/
 
 ## 🎓 Internship & Capstone Project
 
-SmartStock AI was developed as the **final project of my Data Analytics internship and capstone program with Sure Trust**.
+SmartStock AI was developed as the **final project of my Data Analytics internship and capstone program with SURE ProEd (formerly SURE Trust)**.
 
 The internship focused on developing practical skills in **data analysis, SQL, Python, data visualization, business intelligence, and machine learning**. During the program, I worked on different stages of the data analytics process, including data preparation, database management, exploratory analysis, feature engineering, machine learning, and dashboard development.
 
