@@ -1,0 +1,3 @@
+CREATE SCHEMA raw;
+CREATE SCHEMA core;
+CREATE SCHEMA analytics;

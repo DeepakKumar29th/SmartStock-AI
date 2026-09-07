@@ -1,0 +1,128 @@
+{
+  "name": "SmartStock AI — Daily Inventory Alert",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "id": "node-1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  product_id,\n  COUNT(*) AS high_risk_stores,\n  ROUND(AVG(predicted_sales)::numeric, 2) AS avg_predicted_sales,\n  ROUND(AVG(recommended_reorder_qty)::numeric, 1) AS avg_reorder_qty,\n  MAX(replenishment_priority) AS replenishment_priority\nFROM ml.forecast_recommendations\nWHERE stockout_risk = 'HIGH'\n  AND replenishment_priority = 'HIGH'\nGROUP BY product_id\nORDER BY high_risk_stores DESC, avg_predicted_sales DESC\nLIMIT 10;",
+        "additionalFields": {}
+      },
+      "name": "Query High-Risk Products",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 1,
+      "position": [460, 300],
+      "id": "node-2",
+      "credentials": {
+        "postgres": {
+          "id": "smartstock-pg",
+          "name": "SmartStock PostgreSQL"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.length }}",
+              "operation": "larger",
+              "value2": 0
+            }
+          ]
+        }
+      },
+      "name": "Has High-Risk Products?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [680, 300],
+      "id": "node-3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build alert message from query results\nconst products = $input.all();\nconst today = new Date().toLocaleDateString('en-IN', {timeZone: 'Asia/Kolkata'});\n\nlet productLines = products.map(p => {\n  const d = p.json;\n  return `• Product ${d.product_id}\\n  Stores affected: ${d.high_risk_stores}\\n  Avg Predicted Demand: ${d.avg_predicted_sales} units/day\\n  Avg Reorder Quantity: ${d.avg_reorder_qty} units\\n  Priority: ${d.replenishment_priority}`;\n}).join('\\n\\n');\n\nconst subject = `SmartStock AI Alert — ${products.length} Product(s) Require Urgent Review (${today})`;\n\nconst body = `SmartStock AI — Daily Inventory Alert\\n${'='.repeat(60)}\\n\\nDate: ${today}\\nStatus: ${products.length} HIGH-PRIORITY product(s) detected\\n\\nProducts Requiring Urgent Replenishment:\\n${'─'.repeat(50)}\\n\\n${productLines}\\n\\n${'─'.repeat(50)}\\n\\nNOTE: Reorder quantities are demand-based estimates (predicted_sales × 7 days).\\nFreshRetailNet does not provide real-time inventory-on-hand data.\\nThis is an automated alert from SmartStock AI.\\n\\nFor full details, visit the SmartStock AI Streamlit dashboard.`;\n\nreturn [{json: {subject, body, product_count: products.length}}];"
+      },
+      "name": "Build Alert Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 200],
+      "id": "node-4"
+    },
+    {
+      "parameters": {
+        "fromEmail": "smartstock-ai@yourdomain.com",
+        "toEmail": "inventory-manager@yourdomain.com",
+        "subject": "={{ $json.subject }}",
+        "text": "={{ $json.body }}"
+      },
+      "name": "Send Email Alert",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [1120, 200],
+      "id": "node-5",
+      "credentials": {
+        "smtp": {
+          "id": "smtp-credentials",
+          "name": "SMTP Email"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// No high-risk products — log that alert was skipped\nconsole.log('SmartStock AI: No HIGH-priority products found. Alert skipped.');\nreturn [{json: {status: 'skipped', reason: 'No high-priority products detected'}}];"
+      },
+      "name": "Skip Alert (No Risk)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 420],
+      "id": "node-6"
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [{"node": "Query High-Risk Products", "type": "main", "index": 0}]
+      ]
+    },
+    "Query High-Risk Products": {
+      "main": [
+        [{"node": "Has High-Risk Products?", "type": "main", "index": 0}]
+      ]
+    },
+    "Has High-Risk Products?": {
+      "main": [
+        [{"node": "Build Alert Message", "type": "main", "index": 0}],
+        [{"node": "Skip Alert (No Risk)", "type": "main", "index": 0}]
+      ]
+    },
+    "Build Alert Message": {
+      "main": [
+        [{"node": "Send Email Alert", "type": "main", "index": 0}]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": ["SmartStock AI", "Inventory", "Automation"],
+  "triggerCount": 0,
+  "updatedAt": "2024-09-04T00:00:00.000Z",
+  "versionId": "1"
+}

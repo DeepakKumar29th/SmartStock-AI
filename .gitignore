@@ -1,0 +1,57 @@
+# ============================================================
+# SmartStock AI — .gitignore
+# ============================================================
+
+# Environment variables — NEVER commit credentials
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Large ML model files — tracked via DVC or shared storage
+models/*.pkl
+models/*.joblib
+models/*.h5
+
+# Large raw data files — too large for Git
+data/raw/
+data/processed/
+instacart dataset/*.csv
+instacart dataset/*.gz
+instacart dataset/*.zip
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# OS artifacts
+.DS_Store
+desktop.ini
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing cache
+.pytest_cache/
+
+# Streamlit secrets & cache
+.streamlit/secrets.toml
+streamlit/.streamlit/
