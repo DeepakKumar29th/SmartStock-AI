@@ -4,7 +4,7 @@
 > *Data Analytics Capstone Project combining FreshRetailNet-50K (Supply & Inventory Layer) and Instacart Market Basket Analysis (Customer Behavior Layer)*
 
 ---
-
+![SmartStock AI Banner](assets/smartstock-banner.png)
 ## 1. Project Overview
 
 **SmartStock AI** is a full-stack retail decision-support platform designed to help grocery store managers, category planners, and supply chain analysts optimize inventory replenishment, anticipate stockout risks, and understand product-level demand drivers. 
