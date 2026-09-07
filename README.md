@@ -150,28 +150,31 @@ Predicted Demand × 7
 
 ---
 
-### 7. Improve Database & Deployment
-
-Combine these into one clean section because they are closely related:
-
-```markdown
 ## ☁️ Database & Deployment
 
-The application uses PostgreSQL for storing project data and results.
+SmartStock AI uses **PostgreSQL** to store and manage project data, analysis results, forecasts, risk information, and inventory decisions.
 
-- **Development:** Local PostgreSQL
-- **Production:** Neon PostgreSQL
+The project uses PostgreSQL in both development and deployment:
+
+- **Development:** PostgreSQL running locally for data processing and testing
+- **Production:** Neon PostgreSQL as the cloud database
 - **Application:** Streamlit Community Cloud
+- **Source Code:** GitHub
+
+### Deployment Architecture
 
 ```text
-GitHub
-   ↓
+GitHub Repository
+       ↓
 Streamlit Community Cloud
-   ↓
-SmartStock AI
-   ↓
+       ↓
+SmartStock AI Application
+       ↓
 Neon PostgreSQL
+       ↓
+Project Data & Results
 ```
+
 ---
 
 ## 📊 Power BI
