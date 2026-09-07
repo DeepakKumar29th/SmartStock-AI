@@ -675,10 +675,10 @@ DEPT_MAP = {
 # GLOBAL APPLICATION HEADER & REFRESH SYSTEM
 # ══════════════════════════════════════════════════════════════
 
-from datetime import datetime
+from components import get_current_ist_time, format_dashboard_timestamp
 
-if "last_updated" not in st.session_state:
-    st.session_state["last_updated"] = datetime.now().strftime("%d %b %Y, %I:%M %p")
+# Update session state timestamp dynamically on every run
+st.session_state["last_updated"] = format_dashboard_timestamp()
 
 # ── TOP HERO BANNER ───────────────────────────────────────────
 st.markdown("""
@@ -692,21 +692,30 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ── TOP UTILITY TOOLBAR ─────────────────────────────────────────
-top_u1, top_u2 = st.columns([3, 1])
-with top_u1:
-    st.markdown(f"""
+# ── TOP UTILITY TOOLBAR (REAL-TIME LIVE REFRESH) ───────────────
+# Uses Streamlit fragment running every 30 seconds for live clock updates
+# without reloading data or querying the database.
+@st.fragment(run_every=30)
+def render_live_utility_toolbar():
+    live_timestamp = format_dashboard_timestamp()
+    st.session_state["last_updated"] = live_timestamp
+
+    top_u1, top_u2 = st.columns([3, 1])
+    with top_u1:
+        st.markdown(f"""
 <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:10px; padding:10px 18px; box-shadow:0 1px 3px rgba(0,0,0,0.03); display:flex; align-items:center; gap:10px; font-size:13px; color:#475569;">
     <span style="width:8px; height:8px; background:#10B981; border-radius:50%; display:inline-block; box-shadow:0 0 6px #10B981;"></span>
-    <span>Last updated: <strong style="color:#0F172A;">{st.session_state['last_updated']}</strong></span>
+    <span>Last updated: <strong style="color:#0F172A;">{live_timestamp}</strong></span>
 </div>
 """, unsafe_allow_html=True)
 
-with top_u2:
-    if st.button("🔄 Refresh Data", key="global_refresh_btn", use_container_width=True):
-        st.session_state["last_updated"] = datetime.now().strftime("%d %b %Y, %I:%M %p")
-        st.cache_data.clear()
-        st.rerun()
+    with top_u2:
+        if st.button("🔄 Refresh Data", key="global_refresh_btn", use_container_width=True):
+            st.session_state["last_updated"] = format_dashboard_timestamp()
+            st.cache_data.clear()
+            st.rerun()
+
+render_live_utility_toolbar()
 
 st.markdown("<div style='border-bottom: 1.5px solid #E2E8F0; margin: 4px 0 20px 0;'></div>", unsafe_allow_html=True)
 

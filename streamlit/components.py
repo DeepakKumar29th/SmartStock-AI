@@ -332,3 +332,37 @@ def recommendation_card(
         container.html(html)
     else:
         container.markdown(html, unsafe_allow_html=True)
+
+
+# ============================================================
+# TIMEZONE & REAL-TIME DASHBOARD TIMESTAMPS (IST / Asia/Kolkata)
+# ============================================================
+
+from datetime import datetime, timezone, timedelta
+try:
+    from zoneinfo import ZoneInfo
+except ImportError:
+    ZoneInfo = None
+
+IST_TIMEZONE = ZoneInfo("Asia/Kolkata") if ZoneInfo is not None else timezone(timedelta(hours=5, minutes=30), name="IST")
+
+
+def get_current_ist_time() -> datetime:
+    """Return the current timezone-aware datetime in Asia/Kolkata (IST: UTC+05:30).
+    Dynamically computed on each invocation. Never hard-codes dates or times.
+    """
+    if ZoneInfo is not None:
+        try:
+            return datetime.now(ZoneInfo("Asia/Kolkata"))
+        except Exception:
+            pass
+    return datetime.now(timezone(timedelta(hours=5, minutes=30), name="IST"))
+
+
+def format_dashboard_timestamp(dt: datetime = None) -> str:
+    """Format datetime as 'DD Mon YYYY, hh:mm AM/PM IST' (12-hour format).
+    Example: '08 Sep 2026, 02:01 AM IST'
+    """
+    if dt is None:
+        dt = get_current_ist_time()
+    return dt.strftime("%d %b %Y, %I:%M %p IST")
