@@ -155,7 +155,7 @@ SmartStock AI uses **PostgreSQL** to store and manage project data, analysis res
 The project uses PostgreSQL in both development and deployment:
 
 - **Development:** PostgreSQL running locally for data processing and testing
-- **Production:** Neon PostgreSQL as the cloud database
+- **Production:** [Neon PostgreSQL](https://neon.com/gad_source=1&gad_campaignid=21329093217&gbraid=0AAAAAqiR81pnwVonGqpXvsJb3eQyjFesY&gclid=CjwKCAjwwfnUBhAtEiwAfQpAYsDupQXDUznIgMxddlk2lnhKILAcyibG9oGQpbvzJJW1z1ccR7D2RoCeKYQAvD_BwE) as the cloud database
 - **Application:** Streamlit Community Cloud
 - **Source Code:** GitHub
 
