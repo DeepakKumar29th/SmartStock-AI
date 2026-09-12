@@ -1,239 +1,146 @@
-![SmartStock AI Banner](assets/smartstock-banner.png)
+<div align="center" style="border: 2px solid #ccc; padding: 20px; border-radius: 12px; width: 80%; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.15);">
+    <img
+        width="180"
+        height="220"
+        alt="Logo - SURE ProEd"
+        src="https://github.com/user-attachments/assets/88fa5098-24b1-4ece-87df-95eb920ea721"
+        style="border-radius: 10px;"
+    />
 
-# SmartStock AI
+  <h1 align="center" style="font-family: Arial; font-weight: 600; margin-top: 15px;">SURE ProEd (formerly SURE Trust) 
+      </h1>
+<h2 style="color: #2b6cb0; font-family: Arial;">Skill Upgradation for Rural youth Empowerment Trust</h2>
+</div>
 
-> **Data-Driven Inventory Replenishment & Stock Optimization**
+<hr style="border: 0; border-top: 1px solid #ccc; width: 80%;" />
 
-SmartStock AI is a retail inventory analytics and decision-support project.
+<div style="padding: 20px; border: 2px solid #ddd; border-radius: 12px; width: 90%; margin: auto; background: #fafafa; font-family: Arial;">
 
-It uses historical retail data to analyze demand, forecast next-day sales, identify stockout risk, and support replenishment decisions.
+<h2 style = "color:#333;"> Student Details </h2>
+<div align = "left" style ="margin: 20px; font-size: 16px;">
+    <p><strong>Name:</strong> Deepak Kumar </p>
+    <p><strong>Email ID:</strong> deepakg1dataanalytics@gmail.com </p>
+    <p><strong>College Name:</strong> Babu Banarasi Das University </p>
+    <p><strong>Branch/Specialization :</strong> BCA in Data Science and Artificial Intelligence  </p>
+    <p><strong>College ID:</strong> 1230258151 </p>
+</div>
 
-**Project Flow**
+<hr style="border: 0; border-top: 1px solid #ccc; width: 80%;" />
 
-`DATA → ANALYSIS → FORECAST → RISK → REPLENISHMENT → DECISION`
+<h2 style="color:#333;"> Course Details </h2>
+<div align="left" style="margin: 20px; font-size: 16px;">
+    <p><strong>Course Opted:</strong> Data Analytics G1 </p>
+    <p><strong>Instructor Name:</strong> Nithyasri kannathal EL </p>
+</div>
+<div align="left" style="margin: 20px; font-size: 16px;">
+    <p><strong>Duration:</strong> 2nd February 2026 - 9th September 2026 </p>
 
----
+<hr style="border: 0; border-top: 1px solid #ccc; width: 80%;" />
 
-## 🌐 Live Demo
+<h2 style="color:#333;"> Trainer Details </h2>
+<div align="left" style="margin: 20px; font-size: 16px;">
 
-**[Open SmartStock AI](https://smartstock-inventory-ai.streamlit.app/)**
+<p><strong>Trainer Name:</strong> Nithyasri kannathal EL </p>
+<p><strong>Trainer Email ID:</strong> elnithyasri@gmail.com  </p>
+<p><strong>Trainer Designation:</strong> Espergroup - Senior Product Engineer </p>
 
----
+<hr style="border: 0; border-top: 1px solid #ccc; width: 80%;" />
 
-## 📌 Problem Statement
+## **Table of Contents**
+- [Course Learning](#course-learning-to-be-edited-by-student)
+- [Projects Completed](#projects-completed)
+- [Project Introduction](#project-introduction)
+- [Technologies Used](#technologies-used)
+- [Roles and Responsibilities](#roles-and-responsibilities)
+- [Project Report](#project-report)
+- [Learnings from LST & PAWR](#learnings-from-lst--sst)
+- [Community Services](#community-services)
+- [Certificate](#certificate)
+- [Acknowledgments](#acknowledgments)
 
-Retail stores need to maintain the right amount of inventory.
+<hr style="border: 0; border-top: 1px solid #ccc; width: 80%;" />
 
-Low inventory can cause stockouts and lost sales, while excess inventory can increase waste and costs.
 
-SmartStock AI helps identify demand patterns, inventory risk, and products that may need replenishment.
+## Overall Learning 
 
----
+> During this Data Analytics Internship, I got a better understanding of how data is used to solve practical problems. I improved my skills in SQL, Python, Excel, Power BI, data analysis, and dashboards. I enjoyed working with different datasets, finding patterns, and turning them into useful insights. I also learned from my mentor's feedback and became more comfortable trying different approaches when solving problems. Using AI tools helped me explore ideas, understand difficult topics, and improve my work. I also improved my presentation skills and confidence while explaining my work and sharing my findings. Overall, the internship gave me more confidence in approaching analytics tasks independently.
 
-## 🎯 Objectives
+## Projects Completed
 
-- Analyze historical retail sales
-- Understand product and store demand
-- Forecast next-day demand
-- Identify stockout risk
-- Generate replenishment recommendations
-- Store inventory updates
-- Provide clear business insights
+### SmartStock AI
+**Data-Driven Inventory Replenishment & Stock Optimization**
 
----
+SmartStock AI is a retail inventory analytics and decision-support project. It uses historical retail data to understand demand, forecast next-day sales, identify stockout risks, and generate replenishment recommendations. The project brings together data analysis, PostgreSQL, machine learning, Power BI, and Streamlit to turn data into practical business insights.
 
-## 📊 Datasets
+**Technologies:** Python | SQL | PostgreSQL | Scikit-Learn | Power BI | Streamlit | Plotly
 
-| Dataset | Purpose | Coverage | Main Use |
-|---|---|---|---|
-| **FreshRetailNet-50K** | Inventory & Demand | 4.5M training records, 50,000 store-product pairs, 898 stores, 865 products, 90 days | Demand forecasting, stockout risk and replenishment |
-| **Instacart Market Basket Analysis** | Purchase Behavior | 3.4M orders, 206,209 shoppers, 49,688 products | Purchase and reorder behavior |
+**→ [View Full Project Report](https://github.com/sure-trust/DEEPAK-KUMAR-S-g1-data-analytics/blob/4991523cdf869140b7c789fe94c0f3f353c7dac8/Course%20report/SmartStock%20AI%20Project%20Report%20-%20SURE%20Trust.pdf)**
 
-**Sources:**
+**→ [View Project](https://github.com/DeepakKumar29th/SmartStock-AI)**
 
-- [FreshRetailNet-50K](https://huggingface.co/datasets/Dingdong-Inc/FreshRetailNet-50K)
-- [Instacart Market Basket Analysis](https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis)
-- [FreshRetailNet-50K Research Paper](https://arxiv.org/abs/2505.16319)
-
-> The datasets represent different retail environments and are kept separate.
-
----
-
-## 🛠️ Technology Stack
-
-| Area | Technology |
-|---|---|
-| Programming | Python |
-| Data Analysis | Pandas, NumPy |
-| Database | PostgreSQL |
-| Machine Learning | Scikit-Learn |
-| Web Application | Streamlit |
-| Visualization | Plotly |
-| Business Intelligence | Power BI |
-| AI Assistant | Google Gemini API |
-| Testing | Pytest |
-| Version Control | Git & GitHub |
-
----
-
-## 🔄 How It Works
-```
-Retail Data
-     ↓
-Data Cleaning
-     ↓
-PostgreSQL
-     ↓
-Feature Engineering
-     ↓
-Demand Forecast
-     ↓
-Stockout Risk
-     ↓
-Replenishment Recommendation
-     ↓
-Manager Decision 
-```
+**→ [Live Demo](https://smartstock-inventory-ai.streamlit.app/)**
 
 ---
 
-## 🚀 Application
+## References
 
-SmartStock AI includes 8 pages:
+The following sources were used for the datasets and research behind the SmartStock AI project:
 
-| Page | Purpose |
-|---|---|
-| Dashboard | Overall inventory summary |
-| Products | Product demand and risk |
-| Stores | Store performance and risk |
-| Demand & Forecast | Demand and forecast analysis |
-| Inventory Risk | Stockout risk analysis |
-| Replenishment | Reorder recommendations |
-| Add Inventory Data | Add inventory information |
-| AI Inventory Assistant | Explain project results |
+- [FreshRetailNet-50K Dataset](https://huggingface.co/datasets/Dingdong-Inc/FreshRetailNet-50K) 
+     : Retail dataset used for demand forecasting, stockout risk analysis, and inventory-related analysis.  
+
+- [Instacart Market Basket Analysis Dataset](https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis)
+     : Retail purchase data used to understand customer purchase and reorder behaviour.  
 
 ---
 
-## 🤖 Machine Learning
+## **Learnings from LST and PAWR**
 
-A **Random Forest Regressor** is used for next-day demand forecasting.
-
-The model uses historical sales, recent demand, stockout history, calendar information, discounts, and weather-related features.
-
-### Results
-
-| Metric | Value |
-|---|---:|
-| MAE | 0.3889 |
-| RMSE | 0.6451 |
-| R² | 0.8814 |
-| MAPE | 53.90% |
-
-A time-based train/test split is used to prevent future data from being used for earlier predictions.
-
-> MAPE is relatively high because the dataset contains many low and zero-sales observations.
-
+The LST and PAWR sessions gave me a chance to learn directly from industry professionals and experienced mentors. I learned about communication, problem-solving, teamwork, workplace professionalism, personal branding, presentation, and using AI effectively at work. These sessions helped me understand what is expected in a professional environment, communicate with more confidence, and handle different workplace situations in a better way. Overall, they helped me improve my soft skills and become more prepared for my career.
 
 ---
 
-## 📦 Replenishment Logic
+## **Community Services**
 
-The project uses predicted demand to create a simple 7-day demand-cover recommendation.
+As part of my internship, I participated in community service activities that helped me understand the importance of giving back to the community. I completed the required activities by planting 8 long-life tree saplings and spending time serving 8 senior citizens. These activities gave me an opportunity to contribute to the community and learn the value of responsibility, care, and social contribution.
 
-```text
-Suggested Reorder Quantity = Predicted Demand × 7
-```
+### **Activities Involved**
+  
+- **Tree Plantation Drive** – Participated by planting 8 long-life tree saplings in Barawan Kalan, Lucknow, Uttar Pradesh, and contributing to environmental improvement.
 
+- **Helping Elder Citizens** – Served 8 senior citizens and provided support where needed. 
 
+### **Impact / Contribution**
 
----
+- Actively participated in promoting a greener and cleaner surroundings.
+- Offered support to senior citizens, strengthening community bonds.
+- Improved skills in communication, coordination, and social responsibility.
 
-## ☁️ Database & Deployment
+### **Photos**
 
-SmartStock AI uses **PostgreSQL** to store and manage project data, analysis results, forecasts, risk information, and inventory decisions.
-
-The project uses PostgreSQL in both development and deployment:
-
-- **Development:** PostgreSQL running locally for data processing and testing
-- **Production:** [Neon PostgreSQL](https://neon.com/gad_source=1&gad_campaignid=21329093217&gbraid=0AAAAAqiR81pnwVonGqpXvsJb3eQyjFesY&gclid=CjwKCAjwwfnUBhAtEiwAfQpAYsDupQXDUznIgMxddlk2lnhKILAcyibG9oGQpbvzJJW1z1ccR7D2RoCeKYQAvD_BwE) as the cloud database
-- **Application:** Streamlit Community Cloud
-- **Source Code:** GitHub
-
-### Deployment Architecture
-
-```text
-GitHub Repository
-       ↓
-Streamlit Community Cloud
-       ↓
-SmartStock AI Application
-       ↓
-Neon PostgreSQL
-       ↓
-Project Data & Results
-```
+<div align="center">
+<img src="https://github.com/sure-trust/DEEPAK-KUMAR-S-g1-data-analytics/blob/46e02b83ea0a7fc627cf6742d749b5e0099ba2f1/Community%20Services/Tree%20Plantation.jpg?raw=true" alt="Tree Plantation" width="30%">
+<img src="https://github.com/sure-trust/DEEPAK-KUMAR-S-g1-data-analytics/blob/46e02b83ea0a7fc627cf6742d749b5e0099ba2f1/Community%20Services/Helping%20Elder%20Citizens.jpg?raw=true" alt="Helping Elder Citizens" width="30%">
+</div>
 
 ---
 
-## 📊 Power BI
+## **Certificate**
 
-Power BI is used for business reporting and visualization.
+The internship certificate serves as an official acknowledgment of the successful completion of my training period. It will be issued by the organization upon fulfilling all required tasks and meeting the performance expectations of the program. The certificate validates the skills, experience, and contributions made during the internship.
 
-The dashboards cover:
+<!-- add your certificate image url below (inside src='')-->
 
-- Sales and demand
-- Stockout analysis
-- Store performance
-- Product performance
-- Category analysis
-- Replenishment insights
+<p align="center">
+<img src="https://github.com/Lord-Rahul/Practice-Programs/blob/main/react/1/public/Gemini_Generated_Image_a6w8rda6w8rda6w8.png?raw=true" alt="Internship Certificate" width="80%">
+</p>
 
 ---
 
-## ⚠️ Limitations
+## **Acknowledgments**
 
-- The main dataset is historical, not live retail data.
-- Real-time warehouse inventory is not available.
-- Supplier lead times and purchase orders are not included.
-- The two datasets are not joined.
-- Forecast performance can vary for low and zero-sales products.
-- Replenishment results are recommendations, not exact purchase orders.
+- [Prof. Radhakumari Challa](https://www.linkedin.com/in/prof-radhakumari-challa-a3850219b) , Executive Director and Founder - [SURE Trust](https://www.suretrustforruralyouth.com/)
 
----
+- [Bhargavesh Dakka](https://www.linkedin.com/in/bhargavesh-dakka/), GenAI Consultant @ Deloitte USI - Mentor during the initial phase of my internship.
 
-## 📁 Project Structure
-
-```text
-SmartStock-AI/
-├── data/
-├── database/
-├── models/
-├── python/
-├── streamlit/
-├── powerbi/
-├── tests/
-├── docs/
-├── requirements.txt
-├── README.md
-└── .gitignore
-```
-
----
-
-## 🎓 Internship & Capstone Project
-
-SmartStock AI was developed as the **final project of my Data Analytics internship and capstone program with SURE ProEd (formerly SURE Trust)**.
-
-The internship focused on developing practical skills in **data analysis, SQL, Python, data visualization, business intelligence, and machine learning**. During the program, I worked on different stages of the data analytics process, including data preparation, database management, exploratory analysis, feature engineering, machine learning, and dashboard development.
-
-As the final capstone project, these skills were combined into **SmartStock AI**, a complete inventory analytics solution that takes historical retail data and turns it into demand forecasts, stockout risk insights, and replenishment recommendations.
-
-### Skills Applied
-
-**Data Analysis | SQL & PostgreSQL | Python | Machine Learning | Power BI | Streamlit | Business Intelligence**
-
-**Program:** Sure Trust Data Analytics Internship & Capstone Program
-
-- [Sure Trust Data Analytics Repository](https://github.com/sure-trust/DEEPAK-KUMAR-S-g1-data-analytics)
-- [Sure Trust Wesite](https://www.suretrustforruralyouth.com/)
----
+- [Nithyasri Kannathal EL](https://www.linkedin.com/in/nithyasri-kannathal/), Senior Product Engineer at EsperGroup - Mentor during the later phase of my internship.
