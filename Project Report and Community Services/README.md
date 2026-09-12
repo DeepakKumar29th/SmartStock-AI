@@ -1,4 +1,4 @@
-![SmartStock AI Banner](assets/smartstock-banner.png)
+![SmartStock AI Banner](https://github.com/DeepakKumar29th/SmartStock-AI/blob/996e9cf6138c8dbf04c7cdf2e924baedf8e4e187/assets/smartstock-banner.png)
 
 # SmartStock AI
 
