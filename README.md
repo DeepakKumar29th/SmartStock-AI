@@ -74,9 +74,9 @@ SmartStock AI is a retail inventory analytics and decision-support project. It u
 
 **Technologies:** Python | SQL | PostgreSQL | Scikit-Learn | Power BI | Streamlit | Plotly
 
-**→ [View Full Project Report](https://github.com/sure-trust/DEEPAK-KUMAR-S-g1-data-analytics/blob/4991523cdf869140b7c789fe94c0f3f353c7dac8/Course%20report/SmartStock%20AI%20Project%20Report%20-%20SURE%20Trust.pdf)**
+**→ [View Full Project Report](https://github.com/DeepakKumar29th/SmartStock-AI/blob/f516627e032e3d3319cb6505274a97eb95f75ae5/Project%20Report%20and%20Community%20Services/SmartStock%20AI%20Project%20Report%20-%20SURE%20Trust.pdf)**
 
-**→ [View Project](https://github.com/DeepakKumar29th/SmartStock-AI)**
+**→ [Sure Trust Data Analytics Project Repository](https://github.com/sure-trust/DEEPAK-KUMAR-S-g1-data-analytics)**
 
 **→ [Live Demo](https://smartstock-inventory-ai.streamlit.app/)**
 
@@ -119,8 +119,9 @@ As part of my internship, I participated in community service activities that he
 ### **Photos**
 
 <div align="center">
-<img src="https://github.com/sure-trust/DEEPAK-KUMAR-S-g1-data-analytics/blob/46e02b83ea0a7fc627cf6742d749b5e0099ba2f1/Community%20Services/Tree%20Plantation.jpg?raw=true" alt="Tree Plantation" width="30%">
-<img src="https://github.com/sure-trust/DEEPAK-KUMAR-S-g1-data-analytics/blob/46e02b83ea0a7fc627cf6742d749b5e0099ba2f1/Community%20Services/Helping%20Elder%20Citizens.jpg?raw=true" alt="Helping Elder Citizens" width="30%">
+<img src="https://github.com/DeepakKumar29th/SmartStock-AI/blob/f516627e032e3d3319cb6505274a97eb95f75ae5/Project%20Report%20and%20Community%20Services/Tree%20Plantation.jpg?raw=true" alt="Tree Plantation" width="30%">
+<img src="https://github.com/DeepakKumar29th/SmartStock-AI/blob/f516627e032e3d3319cb6505274a97eb95f75ae5/Project%20Report%20and%20Community%20Services/Helping%20Elder%20Citizens.jpg
+?raw=true" alt="Helping Elder Citizens" width="30%">
 </div>
 
 ---
@@ -144,3 +145,6 @@ The internship certificate serves as an official acknowledgment of the successfu
 - [Bhargavesh Dakka](https://www.linkedin.com/in/bhargavesh-dakka/), GenAI Consultant @ Deloitte USI - Mentor during the initial phase of my internship.
 
 - [Nithyasri Kannathal EL](https://www.linkedin.com/in/nithyasri-kannathal/), Senior Product Engineer at EsperGroup - Mentor during the later phase of my internship.
+
+- [Sure Trust Wesite](https://www.suretrustforruralyouth.com/)
+
